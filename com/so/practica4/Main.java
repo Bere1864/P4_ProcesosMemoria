@@ -1,14 +1,15 @@
 package com.so.practica4;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
     static Scanner scanner = new Scanner(System.in); //Sirve para recoger texto por consola
     static int opcion; //opción elegida del usuario
+    //Tamaño de la memoria: 2
+    MapaMemoria memoriaSistema = new MapaMemoria(50);
 
     public static void main(String[] args) {
-        //Tamaño de la memoria: 2
-        MapaMemoria memoriaSistema = new MapaMemoria(50);
 
         while(opcion != 8){
             //Try catch para evitar que el programa termine si hay un error
@@ -58,7 +59,13 @@ public class Main {
         }
 
     }
-
+    public void crearProceso (){
+        String nomProceso;
+        int randomPID;
+        System.out.println("Ingresa el nombre del proceso: ");
+        nomProceso = scanner.nextLine();
+        Random random = new Random();
+        randomPID = random.nextInt(999999);
+        System.out.println(randomPID);
 
 }
-
