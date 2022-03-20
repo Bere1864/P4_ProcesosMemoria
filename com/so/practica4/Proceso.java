@@ -1,4 +1,4 @@
-package src.com.so.practica4;
+package com.so.practica4;
 
 import java.util.List;
 

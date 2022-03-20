@@ -1,16 +1,15 @@
 package com.so.practica4;
 import java.util.Scanner;
-import java.util.LinkedList;
-import java.util.Queue;
-
 
 public class Main {
 
     static Scanner scanner = new Scanner(System.in); //Sirve para recoger texto por consola
     static int opcion; //opción elegida del usuario
-    Queue<Integer> Cola_Procesos =new LinkedList();
 
     public static void main(String[] args) {
+        //Tamaño de la memoria: 2
+        MapaMemoria memoriaSistema = new MapaMemoria(50);
+
         while(opcion != 8){
             //Try catch para evitar que el programa termine si hay un error
             try{
