@@ -1,7 +1,9 @@
 package com.so.practica4;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MapaMemoria {
     int tamanio;
@@ -17,10 +19,22 @@ public class MapaMemoria {
     }
 
     public void imprimirInfo() {
+        System.out.println("Memoria total disponible: " + tamanio + " localidades.");
+    }
 
-        for (DireccionMemoria temp : numDir){
-            temp.infoLocalidad();
+    public boolean espacioDisponible(int locsRequeridas){
+        boolean hayEspacio;
+        int conteoLibres=0;
+        for (DireccionMemoria temp: numDir){
+            if(temp.PID == null)
+                conteoLibres++;
         }
+        System.out.println(conteoLibres);
+        if (conteoLibres>=locsRequeridas)
+            hayEspacio = true;
+        else
+            hayEspacio = false;
+        return hayEspacio;
     }
 }
 

@@ -12,6 +12,7 @@ public class DireccionMemoria {
     }
 
     public void infoLocalidad(){
+        System.out.println("numDireccion" + "     " + "PID" + "     " + "nombreProceso");
         System.out.println(numDireccion + "     " + PID + "     " + nombreProceso);
     }
 

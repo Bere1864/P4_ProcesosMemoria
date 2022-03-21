@@ -4,14 +4,14 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
-
     static Scanner scanner = new Scanner(System.in); //Sirve para recoger texto por consola
     static int opcion; //opción elegida del usuario
-    //Tamaño de la memoria: 2
-    MapaMemoria memoriaSistema = new MapaMemoria(50);
+
 
     public static void main(String[] args) {
-
+        MapaMemoria memoriaSistema = new MapaMemoria(2048);
+        memoriaSistema.imprimirInfo();
+        //Elección menu
         while (opcion != 8) {
             //Try catch para evitar que el programa termine si hay un error
             try {
@@ -31,7 +31,14 @@ public class Main {
                 //Ejemplo de switch case en Java
                 switch (opcion) {
                     case 1:
-                        crearProceso();
+                        Proceso nuevoProceso = new Proceso();
+                        nuevoProceso.crearProceso();
+                        if (memoriaSistema.espacioDisponible(nuevoProceso.getTamanioProceso())){
+                            //Asignación del proceso a memoria
+                        }
+                        else
+                            System.out.println("No hay suficiente espacio disponible para crear el proceso. \n" +
+                                    "Ejecute o mate otros procesos e intente de nuevo");
                         break;
                     case 2:
                         break;
@@ -62,28 +69,4 @@ public class Main {
 
     }
 
-    public static void crearProceso() {
-        String nomProceso;
-        int randomPID;
-        int numInstrucciones;
-        int espacioProceso;
-        Random random = new Random();
-
-        //Lectura del nombre del proceso
-        System.out.println("Ingresa el nombre del proceso: ");
-        nomProceso = scanner.nextLine();
-        //PID aleatorio
-        randomPID = random.nextInt(999999);
-        //Num aleatorio instrucciones entre 10-30
-        numInstrucciones = random.nextInt(30 + 10) +10;
-        //Num aleatorio para espacio proceso
-        int tamaniolocalidades[] = {64,128,256,512};
-        int selecciontamanio = random.nextInt(3);
-        espacioProceso = tamaniolocalidades[selecciontamanio];
-
-        System.out.println(randomPID);
-        System.out.println(numInstrucciones);
-        System.out.println(espacioProceso);
-
-    }
 }
