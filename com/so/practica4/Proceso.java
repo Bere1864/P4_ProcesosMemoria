@@ -1,5 +1,6 @@
 package com.so.practica4;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class Proceso {
     int instruccionesTotales;
     int instruccionesEjecutadas;
     int tamanioProceso;
-    List dirAsignadas;
+    List<Integer> dirAsignadas = new ArrayList<Integer>();
 
     public Proceso() {
     }
@@ -30,6 +31,19 @@ public class Proceso {
         int tamaniolocalidades[] = {64,128,256,512};
         int selecciontamanio = random.nextInt(3);
         setTamanioProceso(tamaniolocalidades[selecciontamanio]);
+        scanner.close();
+    }
+
+    public void setDirAsignadas(List<Integer> dirAsignadas) {
+        this.dirAsignadas = dirAsignadas;
+    }
+
+    //Datos del proceso
+    public void verProceso(){
+        System.out.println("Nombre del proceso: " + getNomProceso());
+        System.out.println("PID: " + getPID());
+        System.out.println("Instrucciones totales: " + getInstruccionesTotales());
+        System.out.println("Instrucciones ejecutadas: " + getInstruccionesEjecutadas());
 
     }
 
@@ -77,7 +91,5 @@ public class Proceso {
         return dirAsignadas;
     }
 
-    public void setDirAsignadas(List dirAsignadas) {
-        this.dirAsignadas = dirAsignadas;
-    }
+
 }

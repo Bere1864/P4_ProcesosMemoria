@@ -1,15 +1,13 @@
 package com.so.practica4;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MapaMemoria {
     int tamanio;
     List<DireccionMemoria> numDir = new ArrayList<DireccionMemoria>();
 
-    //Constructor
+    //Constructor recibe tamaño del mapa de memoria
     public MapaMemoria(int tamanio) {
         this.tamanio = tamanio;
         //Añade Direcciones de Memoria según el tamaño especificado
@@ -22,6 +20,7 @@ public class MapaMemoria {
         System.out.println("Memoria total disponible: " + tamanio + " localidades.");
     }
 
+    //Verifica que haya espacio en memoria para almacenar un proceso nuevo
     public boolean espacioDisponible(int locsRequeridas){
         boolean hayEspacio;
         int conteoLibres=0;
@@ -29,12 +28,27 @@ public class MapaMemoria {
             if(temp.PID == null)
                 conteoLibres++;
         }
-        System.out.println(conteoLibres);
-        if (conteoLibres>=locsRequeridas)
+        if (conteoLibres>=locsRequeridas) {
             hayEspacio = true;
+        }
         else
             hayEspacio = false;
         return hayEspacio;
+    }
+
+    public List<Integer> asignacionDirecciones(Proceso Proceso){
+        int i = Proceso.getTamanioProceso();
+        List<Integer> direccionesProceso = new ArrayList<Integer>();
+        System.out.println(i);
+        for (DireccionMemoria temp : numDir) {
+            if (temp.getPID() == null && i>=1) {
+                direccionesProceso.add(temp.getNumDireccion());
+                temp.nombreProceso = Proceso.getNomProceso();
+                temp.PID = Proceso.getPID();
+                i--;
+                }
+        }
+        return direccionesProceso;
     }
 }
 

@@ -1,5 +1,6 @@
 package com.so.practica4;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -10,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         MapaMemoria memoriaSistema = new MapaMemoria(2048);
+        ColaProcesos listaProcesos = new ColaProcesos();
         memoriaSistema.imprimirInfo();
         //Elección menu
         while (opcion != 8) {
@@ -34,7 +36,13 @@ public class Main {
                         Proceso nuevoProceso = new Proceso();
                         nuevoProceso.crearProceso();
                         if (memoriaSistema.espacioDisponible(nuevoProceso.getTamanioProceso())){
-                            //Asignación del proceso a memoria
+                            List <Integer> dirAsignadasProceso = new ArrayList<Integer>();
+                            System.out.println("Hasta acá bn");
+                            dirAsignadasProceso = memoriaSistema.asignacionDirecciones(nuevoProceso);
+
+                            nuevoProceso.setDirAsignadas(dirAsignadasProceso);
+
+                            listaProcesos.aniadirProceso(nuevoProceso);
                         }
                         else
                             System.out.println("No hay suficiente espacio disponible para crear el proceso. \n" +
